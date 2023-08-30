@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <body style="background-image: url(../../media/burger.jpg);">
+
+        <main style="width: auto; background-color: rgba(0, 0, 0, 0.459);">
+            <center>
+                <p style="width: 600px; background-color: rgba(0, 0, 0, 0.792); color: wheat;">We invite you to cast your valuable votes for the delightful dishes that you'd
+                    love to savor during the upcoming day.
+                    Your preferences matter to us, and by sharing your choices, you're actively participating in shaping
+                    our culinary offerings.
+                    Your input ensures that our kitchen prepares the meals you're most excited about, creating an
+                    unforgettable dining experience tailored to your preferences. So,
+                    don't hesitate to vote for the dishes that will delight your taste buds tomorrow!</p>
+            </center>
+
+            <h2>Choose the dish from the list</h2>
+
+            
+                <ul style="text-align: left;padding-left: 220px;">
+                    <p>
+                        {% for post in post_list%}
+
+                        <a href="{% url 'blog_detail' post.id %}">
+                            <li>{{post.post_text}}</li>
+                        </a>
+
+                        {% endfor %}
+                    </p>
+                </ul>
+           
+        </main>
+
+    </body>
+{% endblock %}
+
+</html>

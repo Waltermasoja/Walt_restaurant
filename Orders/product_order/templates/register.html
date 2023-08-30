@@ -1,0 +1,53 @@
+{% extend base.html %}
+{% block content %}
+<body style="background-image: url(../../media/banner-img.png);">
+    <center> <h1>Register</h1></center>
+
+    <center>
+        <div class="container-fluid">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table style="border-collapse: separate;border-spacing: 1em; background-color: rgba(0, 0, 0, 0.632);color: aliceblue;">
+                <tr>
+                    <td> {{form.username.label}}</td>
+                    <td> {{form.username}}</td>
+                </tr>
+                <tr>
+                    <td> {{form.email.label}}</td>
+                    <td> {{form.email}}</td>
+                </tr>
+                <tr>
+                    <td> {{form.password1.label}}</td>
+                    <td> {{form.password1}}</td>
+                </tr>
+
+                <tr>
+                    <td> {{form.password2.label}}</td>
+                    <td>  {{form.password2}}</td>
+                </tr>
+
+                <tr>
+                    <td> </td>
+                    <td>  <button type="submit" class="btn btn-success">Register</button></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td> <a class="nav-link active" href="{% url 'login' %}" style="color:seashell;" >Login</a></td>
+                </tr>
+            </table>
+
+           {% for message in messages %} 
+            <p>{{message}}</p>
+           {% endfor%}
+            
+           
+
+          </form>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </form> </center>
+
+    
+</body>
+{% endblock %}
+</html>

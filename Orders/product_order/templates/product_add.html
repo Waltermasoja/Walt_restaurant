@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<body style="background-image: url(../../media/banner-img.png);">
+    
+
+    <center>
+        <p>
+    <form method="POST" >
+        {% csrf_token %}
+        <table style="border-collapse: separate; border-spacing: 1em; color: white;background-color: rgba(0, 0, 0, 0.63);">
+        <tr>
+            <td>{{form.name.label}} </td>
+            <td>{{form.name}} </td>
+        </tr>
+
+        <tr>
+            <td>{{form.description.label}}</td>
+            <td>{{form.description}}</td>
+        </tr>
+
+        <tr>
+            <td>{{form.image.label}} </td>
+            <td>{{form.image}}</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><p><BUtton type="submit" class="btn btn-success">Upload</BUtton></p></td>
+            
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><a class="nav-link active" href="{% url 'index' %}" style="color: aliceblue;" >Home</a></td>
+            
+        </tr>
+         
+        </table>
+
+        
+         
+    </form>
+</p>
+</center>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+</html>

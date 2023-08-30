@@ -1,0 +1,36 @@
+ nav {
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.21);
+ }
+ 
+ main  {
+    
+    background-color: rgba(0, 0, 0, 0.591);
+    color: aliceblue;
+    height: 500px;
+    text-align: center;
+ }
+ header {
+    
+    background-color: rgba(0, 0, 0, 0.516);
+    text-align: center;
+ }
+
+ p {
+    color: aliceblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ }
+ h1 {
+    color: aliceblue;
+    font-size: 50px;
+    text-align: center;
+    
+ }
+ footer {
+    color: aliceblue;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0.518);
+ }

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="width: 1024px;"> 
+<body style="background-image: url(../../media/burger.jpg);">
+   
+          <center>
+          <form action="{% url 'blog_vote' blog_post.id %}" method="post" style="height: 200px;">
+            {% csrf_token  %}
+            <fieldset style="color: wheat; ">
+                <legend><h1>{{post.post_text}}</h1></legend>
+                {% if error %} {{error_message}}  {% endif %}
+
+                {% for choice in blog_post.choice_set.all  %}
+                <input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}">
+                <label for="choice{{forloop.counter}}">{{choice.choice_text}}</label><br>
+                {% endfor %}
+            </fieldset>
+       <input type="submit" value="vote" style="background-color: seagreen;">
+
+          </form>
+        </center>
+
+</section>
+<footer>Created by Walter Masoja</footer>
+</body>
+
+</div>
+{% endblock %}
+</html>
