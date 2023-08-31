@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class make_order(forms.ModelForm):
     class Meta:
         model = product
-        fields = ("name",'description','image')
+        fields = '__all__'
 
 class createUserForm(UserCreationForm):
     class Meta:

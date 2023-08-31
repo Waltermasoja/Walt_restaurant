@@ -1,44 +1,9 @@
+
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-</head>
-<div class="container" style="width: 1024px;">
+{% block content %}
 <body style="background-image: url(../../media/burger.jpg); color: antiquewhite;background-color: rgba(128, 128, 128, 0.47) ;background-attachment: fixed;">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-size: 12px;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Walt</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
-                    {% if user.is_superuser %}
-                    <a class="nav-link" href="{% url 'product_add' %}">Add Menu</a>
-                    {% endif %}
-
-                    <a class="nav-link active" href="{% url 'blog_home' %}">Vote for Dishes</a>
-
-                    <a class="nav-link active" href="{% url 'login' %}">Login</a>
-
-                    <a class="nav-link active" href="{% url 'chats'  %}">blog</a>
-
-                </div>
-            </div>
-        </div>
-        <span style="margin: 6px;">Hello,{{request.user}},</span>
-        <span><a href="{% url 'logout' %}" style="color: aliceblue;padding-right: 10px;" ;>Logout</a></span>
-    </nav>
- 
+    
     <h2>{{chat_posts.advice}}</h2>
     <p style="color: wheat;">{{chat_posts.advice_text}}</p>
     {% if comments %}
@@ -99,7 +64,8 @@
 
     </form>
 
-<script src="../../static/scripts.js"> </script>
+{% block javascript %}<script src="../../static/scripts.js"> </script>{% endblock javascript %}
 </body>
+{% endblock %}
 </div>
 </html>

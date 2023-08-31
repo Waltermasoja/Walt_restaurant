@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
 <div class="container" style="width: 1024px;"> 
-<body style="background-image: url(../../media/burger.jpg);background-attachment: fixed;">
+<body style="background-image: url(../../media/burger.jpg);">
    
           <center>
           <form action="{% url 'blog_vote' blog_post.id %}" method="post" style="height: 200px;">
