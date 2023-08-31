@@ -25,6 +25,9 @@
             {% if user.is_superuser %}
             <a class="nav-link" href="{% url 'product_add' %}">Add Menu</a>
             {% endif %}
+            {% if user.is_superuser %}
+            <a class="nav-link" href="{% url 'add_choice' %}">Add Meal choices</a>
+            {% endif %}
 
             <a class="nav-link active" href="{% url 'blog_home' %}">Suggested dishes </a>
 

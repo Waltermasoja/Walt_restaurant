@@ -16,4 +16,9 @@ class createUserForm(UserCreationForm):
 class comments_form(forms.ModelForm):
     class Meta:
         model = chat_comment
-        fields = ['author','comment_text',]     
+        fields = ['author','comment_text',]    
+
+class choice_adding_form(forms.ModelForm):
+    class Meta:
+        model = choice
+        fields = '__all__'    

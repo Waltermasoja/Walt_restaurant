@@ -15,6 +15,7 @@ urlpatterns = [
      path('<int:pk>/blog_vote',views.blog_vote,name='blog_vote'),
      path('chats',views.chats,name='chats'),
      path('<int:pk>/chat_post_detail',views.chat_post_detail,name='chat_post_detail'),
+     path('add_choice/',views.add_choice,name='add_choice'),
      # path('<int:pk>/add_comment', views.add_comment, name='add_comment'),
 
      
