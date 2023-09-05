@@ -28,7 +28,7 @@ class choice_adding_form(forms.ModelForm):
         model = choice
         fields = '__all__'    
 
-class post_adding_form(forms.ModelForm):
+class chat_post_adding_form(forms.ModelForm):
     class Meta:
         model = chat_post
         fields = '__all__'        

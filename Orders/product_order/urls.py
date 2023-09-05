@@ -16,6 +16,7 @@ urlpatterns = [
      path('chats',views.chats,name='chats'),
      path('<int:pk>/chat_post_detail',views.chat_post_detail,name='chat_post_detail'),
      path('add_choice/',views.add_choice,name='add_choice'),
+     # path('add_chat_post',views.add_chat_post,name='add_chat_post'),
      
 
      

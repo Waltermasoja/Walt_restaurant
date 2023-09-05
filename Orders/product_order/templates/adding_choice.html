@@ -3,20 +3,25 @@
 {% block content %}
 <body style="background-image: url(../../media/burger.jpg);">
     
-    <h1>Add the available choices for selection</h1>
-
-    
-    <form action="" method="post" id="post_form" value=" post_form">
-        {% csrf_token%}
-        {{post_add.as_p}}
-    </form>
 <form action="" method="post" id="comment_form" value=" comment_form">
     {% csrf_token%}
    
 <center>
     <table style="border-collapse: separate; border-spacing: 1em;color: aliceblue; background-color: rgba(0, 0, 0, 0.534);">
-
+       
+        <tr>
+            <td><label for="advice">Food Advice</label></td>
+            <td><input type="text">{{c_p_add.avice}}</td>
+        </tr>
+        <td><label for="advice_text">Advice Text</label></td>
+        <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+    </tr>
+</tr>
+<td><label for="date">Date</label></td>
+<td><input type="date"></td>
+</tr>
       
+
         <tr>
             <td><label for="post">Select Post</label></td>
             <td>{{c_add.post}}</td>

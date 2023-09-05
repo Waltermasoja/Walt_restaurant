@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render,get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .forms import make_order,createUserForm,comments_form,choice_adding_form,post_adding_form
+from .forms import make_order,createUserForm,comments_form,choice_adding_form,post_adding_form,chat_post_adding_form
 from .models import product,post,choice,chat_post,chat_comment
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib import messages
@@ -109,30 +109,28 @@ def chat_post_detail(request,pk):
 
 @login_required
 def add_choice(request):
-    if request.method == 'POST':
+    if request.method == 'POST'  :
         c_add = choice_adding_form(request.POST)
-        if c_add.is_valid():
+        c_p_add = chat_post_adding_form(request.POST) 
+        if c_add.is_valid() and c_p_add.is_valid():
             c_add.save()
+            c_p_add.save()
         return redirect('add_choice') 
     else:
-        c_add = choice_adding_form     
-    return render(request,'adding_choice.html',{'c_add':c_add})
+        c_add = choice_adding_form   
+        c_p_add = chat_post_adding_form()  
+    return render(request,'adding_choice.html',{'c_add':c_add,"c_p_add":c_p_add})
 
 # @login_required
-# def add_choice(request):
-#     if request.method == 'POST':
+# def add_chat_post(request):
+#     if request.method == 'POST' 'post_form' in request.POST:
 #         if request.POST.get('form_type') == 'post_form':
-#          post_add = post_adding_form(request.POST)
+#          post_add = chat_post_adding_form(request.POST)
 #          if post_add.is_valid():
 #             post_add.save()
-         
-#         elif request.POST.get('form_type') == 'comment_form':
-#             c_add = choice_adding_form(request.POST)
-#             if c_add.is_valid():
-#              c_add.save()
 #         return redirect('add_choice')
 
 #     else:
 #         post_add = post_adding_form     
-#     return render(request,'adding_choice.html',{'post_add':post_add,'choice_add':c_add},)       
+#     return render(request,'adding_choice.html',{'post_add':post_add,},)       
 
