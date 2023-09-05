@@ -1,81 +1,95 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-     <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <div class="container-fluid width=1024px;" style="width: 1024px;">
-<body style="background-color: rgba(0, 0, 0, 0.612);background-image: url(../../static/images/restaurant.jpeg);background-repeat: no-repeat;background-attachment: fixed;">
-  
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-size: 12px;">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Walt</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  {% if user.is_superuser %}
-                  <a class="nav-link" href="{% url 'product_add' %}">Add Menu</a>
-                  {% endif %}
 
-                  <a class="nav-link active" href="{% url 'blog_home' %}"  >Vote for Dishes</a>
+  <body
+    style="background-color: rgba(0, 0, 0, 0.612);background-image: url(../../static/images/restaurant.jpeg);background-repeat: no-repeat;background-attachment: fixed;">
 
-                  <a class="nav-link active" href="{% url 'login' %}"  >Login</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-size: 12px;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Walt</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            {% if user.is_superuser %}
+            <a class="nav-link" href="{% url 'product_add' %}">Add Menu</a>
+            {% endif %}
+            {% if user.is_superuser %}
+            <a class="nav-link" href="{% url 'add_choice' %}">Add Meal choices</a>
+            {% endif %}
 
-                  <a class="nav-link active" href="{% url 'chats'  %}"  >blog</a>
-                  
-                </div>
-              </div>
-            </div>
-            <span style="margin: 6px;">Hello,{{request.user}},</span>
-            <span><a href="{% url 'logout' %}" style="color: aliceblue;padding-right: 10px;" ;>Logout</a></span>
-          </nav>
+            <a class="nav-link active" href="{% url 'blog_home' %}">Vote for Dishes</a>
+
+            <a class="nav-link active" href="{% url 'login' %}">Login</a>
+
+            <a class="nav-link active" href="{% url 'chats'  %}">blog</a>
+
+          </div>
+        </div>
+      </div>
+      <span style="margin: 6px;">Hello,{{request.user}},</span>
+      <span><a href="{% url 'logout' %}" style="color: aliceblue;padding-right: 10px;" ;>Logout</a></span>
+    </nav>
 
     </nav>
-    <header><h1>The Hungry Palette</h1>
-    
+    <header>
+      <h1>The Hungry Palette</h1>
+
     </header>
 
     <main style="border-bottom: 4px;">
-        <p style="padding-bottom: 4px;margin-bottom: 3px;"><h5>"Indulge in Culinary Delights: Where Flavor and Artistry Unite"
-        </h5></p>
-        <div class="row">
-          {% for x in obj %}
-          <div class="col-lg-4  mb-3 d-flex align-item-stretch">
-            
+      <p style="padding-bottom: 4px;margin-bottom: 3px;">
+      <h5>"Indulge in Culinary Delights: Where Flavor and Artistry Unite"
+      </h5>
+      </p>
+      <div class="row">
+        {% for x in obj %}
+        <div class="col-lg-4  mb-3 d-flex align-item-stretch">
+
           <div class="card" style="width: 22rem;">
             <div class="card-body" style="background-color: rgba(240, 248, 255, 0.292);">
               <img src="{{ x.image.url }}" class="card-img-top" alt="...">
               <div class="card-body">
                 <p class="card-text" style="color: black;">{{x.description}}</p>
               </div>
-              </div>
-           
+            </div>
+
           </div>
-          </div>
-            {% endfor %}
-          </div>
+        </div>
+        {% endfor %}
+      </div>
     </main>
     <section style="width: 1024px; border-top: 4px;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15194.810947549642!2d31.107179054933773!3d-17.80566250431528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931ba5588857d3d%3A0xd8cd709da04c679c!2sPogo&#39;s%20Great%20Pizza%20and%20Chicken!5e0!3m2!1sen!2sza!4v1692946918764!5m2!1sen!2sza" width="1000px" height="600" style="border:0;" 
-      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15194.810947549642!2d31.107179054933773!3d-17.80566250431528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931ba5588857d3d%3A0xd8cd709da04c679c!2sPogo&#39;s%20Great%20Pizza%20and%20Chicken!5e0!3m2!1sen!2sza!4v1692946918764!5m2!1sen!2sza"
+        width="1000px" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
     </section>
- <p style="text-align: center; background-color: rgba(0, 0, 0, 0.463);">
-       Contact us <br>
-  Phone number : +27640144641 <br>
-  Email address : walterfmasoja@gmail.com <br>
- </p>
+    <p style="text-align: center; background-color: rgba(0, 0, 0, 0.463);">
+      Contact us <br>
+      Phone number : +27640144641 <br>
+      Email address : walterfmasoja@gmail.com <br>
+    </p>
 
 
     <footer>Created by Walter Masoja</footer>
   </body>
 
 </div>
+
 </html>

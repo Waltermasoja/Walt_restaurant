@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render,get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .forms import make_order,createUserForm,comments_form,choice_adding_form
+from .forms import make_order,createUserForm,comments_form,choice_adding_form,post_adding_form
 from .models import product,post,choice,chat_post,chat_comment
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib import messages
@@ -118,5 +118,21 @@ def add_choice(request):
         c_add = choice_adding_form     
     return render(request,'adding_choice.html',{'c_add':c_add})
 
-       
+# @login_required
+# def add_choice(request):
+#     if request.method == 'POST':
+#         if request.POST.get('form_type') == 'post_form':
+#          post_add = post_adding_form(request.POST)
+#          if post_add.is_valid():
+#             post_add.save()
+         
+#         elif request.POST.get('form_type') == 'comment_form':
+#             c_add = choice_adding_form(request.POST)
+#             if c_add.is_valid():
+#              c_add.save()
+#         return redirect('add_choice')
+
+#     else:
+#         post_add = post_adding_form     
+#     return render(request,'adding_choice.html',{'post_add':post_add,'choice_add':c_add},)       
 

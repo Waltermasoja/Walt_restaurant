@@ -1,5 +1,5 @@
 from django import forms
-from .models import product,chat_comment,chat_post,choice
+from .models import product,chat_comment,chat_post,choice,post,chat_post
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -18,7 +18,17 @@ class comments_form(forms.ModelForm):
         model = chat_comment
         fields = ['author','comment_text',]    
 
+class post_adding_form(forms.ModelForm):
+    class Meta:
+        model = post
+        fields = '__all__'          
+
 class choice_adding_form(forms.ModelForm):
     class Meta:
         model = choice
         fields = '__all__'    
+
+class post_adding_form(forms.ModelForm):
+    class Meta:
+        model = chat_post
+        fields = '__all__'        

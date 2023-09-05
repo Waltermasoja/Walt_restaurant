@@ -8,6 +8,9 @@ class product(models.Model):
     description = models.CharField(max_length=400)
     image = models.ImageField(upload_to='images/',default='Null')
 
+    def __str__(self):
+        return self.name
+
 class post(models.Model):
     post_text = models.CharField(max_length=250)
     date_published = models.DateTimeField('date published')
@@ -31,6 +34,9 @@ class chat_post(models.Model):
     advice = models.CharField(max_length=200)
     advice_text = models.TextField()
     published_on = models.DateField("date added")
+
+    def __str__(self) :
+        return self.advice
 
 class chat_comment(models.Model):
     comment = models.ForeignKey(chat_post,on_delete=models.CASCADE,related_name='comments')
