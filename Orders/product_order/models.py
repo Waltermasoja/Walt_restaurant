@@ -44,6 +44,9 @@ class chat_comment(models.Model):
     comment_text = models.TextField() 
     added_on  = models.DateField(auto_now_add=True)
 
+    def __str__(self) :
+        return self.comment_text
+
 
  
 

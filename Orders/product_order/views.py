@@ -111,26 +111,26 @@ def chat_post_detail(request,pk):
 def add_choice(request):
     if request.method == 'POST'  :
         c_add = choice_adding_form(request.POST)
-        c_p_add = chat_post_adding_form(request.POST) 
-        if c_add.is_valid() and c_p_add.is_valid():
+       
+        if c_add.is_valid() :
             c_add.save()
-            c_p_add.save()
+           
         return redirect('add_choice') 
     else:
         c_add = choice_adding_form   
-        c_p_add = chat_post_adding_form()  
-    return render(request,'adding_choice.html',{'c_add':c_add,"c_p_add":c_p_add})
+          
+    return render(request,'adding_choice.html',{'c_add':c_add,})
 
-# @login_required
-# def add_chat_post(request):
-#     if request.method == 'POST' 'post_form' in request.POST:
-#         if request.POST.get('form_type') == 'post_form':
-#          post_add = chat_post_adding_form(request.POST)
-#          if post_add.is_valid():
-#             post_add.save()
-#         return redirect('add_choice')
+@login_required
+def add_chat_post(request):
+    if request.method == 'POST' 'post_form' in request.POST:
+        if request.POST.get('form_type') == 'post_form':
+          c_p_add = chat_post_adding_form(request.POST) 
+        if  c_p_add.is_valid():
+             c_p_add.save()
+        return redirect('add_choice')
 
-#     else:
-#         post_add = post_adding_form     
-#     return render(request,'adding_choice.html',{'post_add':post_add,},)       
+    else:
+         c_p_add = chat_post_adding_form()   
+    return render(request,'adding_post.html',{' c_p_add': c_p_add,},)       
 
